@@ -1,28 +1,21 @@
-class LiczbaZespolona:
+class LiczbaZespolona(complex):
     def modul(self):
-        return abs(self.value)
+        return abs(self)
 
     def __str__(self):
-        return '('+str(self.value.real)+','+str(self.value.imag)+')'
+        return '('+str(self.real)+','+str(self.imag)+')'
 
     def __add__(self, other):
-        r = self.value+other.value
-        return LiczbaZespolona(r.real, r.imag)
+        return LiczbaZespolona(super().__add__(other))
 
     def __mul__(self, other):
-        r = self.value*other.value
-        return LiczbaZespolona(r.real, r.imag)
+        return LiczbaZespolona(super().__mul__(other))
 
     def __sub__(self, other):
-        r = self.value-other.value
-        return LiczbaZespolona(r.real, r.imag)
+        return LiczbaZespolona(super().__sub__(other))
 
     def __truediv__(self, other):
-        r = self.value/other.value
-        return LiczbaZespolona(r.real, r.imag)
-
-    def __init__(self, real, imaginary):
-        self.value = complex(real, imaginary)
+        return LiczbaZespolona(super().__truediv__(other))
 
 
 za = LiczbaZespolona(1, 1)
