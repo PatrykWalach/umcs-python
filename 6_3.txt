@@ -1,0 +1,4 @@
+py -m venv myenv
+cd myenv
+./Scripts\activate
+pip install pycodestyle
