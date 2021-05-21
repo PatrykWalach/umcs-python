@@ -83,16 +83,18 @@ class Tank:
         y = self.shot_strength*math.sin(self.cannon_angle)
         velocity = Vector(x, y)
 
-        start = velocity*i+self.cannon_end()
+        missile_diagonal = Vector(10, 10)
+
+        start = velocity*i+self.cannon_end() - missile_diagonal/2
 
         g = 2
         start.y += g*(i**2)/2
-        end = start + Vector(10, 10)
+        end = start + missile_diagonal
 
         missile = canvas.create_oval(
             start.x, start.y, end.x, end.y, fill=self.fill)
 
-        window.after(100, self.shoot, i+1,missile)
+        window.after(100, self.shoot, i+1, missile)
 
     def increment_shot_strength(self):
         self.shot_strength += 1
